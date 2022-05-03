@@ -2,14 +2,14 @@ import 'package:elmawkef_inc/app/models/service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class StartPage extends StatefulWidget {
-  const StartPage({Key? key}) : super(key: key);
+class Home extends StatefulWidget {
+  const Home({Key? key}) : super(key: key);
 
   @override
-  _StartPageState createState() => _StartPageState();
+  _HomeState createState() => _HomeState();
 }
 
-class _StartPageState extends State<StartPage> {
+class _HomeState extends State<Home> {
   List<Service> services = [
     Service('Cleaning',
         'https://img.icons8.com/external-vitaliy-gorbachev-flat-vitaly-gorbachev/2x/external-cleaning-labour-day-vitaliy-gorbachev-flat-vitaly-gorbachev.png'),

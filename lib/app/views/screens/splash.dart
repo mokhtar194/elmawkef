@@ -1,9 +1,13 @@
 
+import 'package:elmawkef_inc/app/controllers/slpash.dart';
 import 'package:elmawkef_inc/app/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class Splash extends GetResponsiveView {
+class Splash extends GetResponsiveView<SplashController> {
+
+  @override
+  final controller = Get.put(SplashController());
   @override
   Widget? desktop() {
     return Scaffold(
@@ -97,10 +101,10 @@ class Splash extends GetResponsiveView {
                 children: [
                   TextSpan(
                     text: "Wkef",
-                    style: TextStyle(color: Colors.redAccent, fontSize: 36),
+                    style: TextStyle(color: Colors.redAccent, fontSize: 28),
                   ),
                 ],
-                style: TextStyle(color: Colors.white, fontSize: 36),
+                style: TextStyle(color: Colors.white, fontSize: 28),
               ),
             )
           ],

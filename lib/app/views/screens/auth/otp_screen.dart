@@ -90,7 +90,7 @@ class OtpScreen extends GetResponsiveView {
                               activeFillColor: Colors.white,
                             ),
                             cursorColor: Colors.black,
-                            animationDuration: Duration(milliseconds: 300),
+                            animationDuration: const Duration(milliseconds: 300),
                             enableActiveFill: true,
                             controller: controller.otpController,
                             keyboardType: TextInputType.number,
@@ -341,7 +341,9 @@ class OtpScreen extends GetResponsiveView {
               Padding(
                 padding: EdgeInsets.symmetric(vertical: screen.height * 0.02),
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    controller.verifyOTP();
+                  },
                   child: const Text("Confirm"),
                   style: ButtonStyle(
                     padding: MaterialStateProperty.all(

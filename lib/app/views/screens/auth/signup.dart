@@ -284,9 +284,18 @@ class SignUp extends GetResponsiveView<SignUpController> {
                         children: <Widget>[
                           TextFormField(
                             decoration: const InputDecoration(
-                                border: UnderlineInputBorder(),
-                                labelText: 'Your name',
-                                prefixIcon: Icon(Icons.person)),
+                              border: UnderlineInputBorder(),
+                              labelText: 'Your name',
+                              prefixIcon: Icon(Icons.person),
+                            ),
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
+                            validator: (String? val) {
+                              if (val == null || val.length < 3) {
+                                return "Le nom est  pas valid";
+                              } else
+                                return null;
+                            },
                           ),
                           SizedBox(
                             height: screen.height * 0.025,
@@ -297,6 +306,8 @@ class SignUp extends GetResponsiveView<SignUpController> {
                             },
                             selectorConfig: const SelectorConfig(
                               selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
+                              setSelectorButtonAsPrefixIcon: true,
+                              leadingPadding: 20,
                             ),
                             ignoreBlank: false,
                             autoValidateMode: AutovalidateMode.disabled,
@@ -309,7 +320,6 @@ class SignUp extends GetResponsiveView<SignUpController> {
                                 signed: true, decimal: true),
                             inputBorder: const OutlineInputBorder(),
                             onSaved: (PhoneNumber number) {
-                              print(number.toString());
                             },
                           ),
                         ],
@@ -320,11 +330,13 @@ class SignUp extends GetResponsiveView<SignUpController> {
               ),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: screen.height * 0.03),
-                child: ElevatedButton(
+                child:  ElevatedButton(
                   onPressed: () {
                     controller.verifyNumber(controller.number.toString());
                   },
-                  child: const Text("Next"),
+                  child:
+                  const Text("Next"),
+
                   style: ButtonStyle(
                     padding: MaterialStateProperty.all(
                       EdgeInsets.symmetric(horizontal: screen.width * 0.1),

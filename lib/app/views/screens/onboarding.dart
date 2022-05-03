@@ -18,60 +18,62 @@ class OnboardingScreen extends GetResponsiveView<OnboardingController> {
           PageView.builder(
             controller: controller.pageController,
             itemBuilder: (BuildContext context, int index) {
-              return Row(
-                children: [
-                  Flexible(
-                    child: SizedBox(
-                      child: Image.asset(
-                        controller.pages[controller.currentIndex.value].image
-                            .toString(),
-                        fit: BoxFit.contain,
+              return Obx(() => Row(
+                    children: [
+                      Flexible(
+                        child: SizedBox(
+                          child: Image.asset(
+                            controller
+                                .pages[controller.currentIndex.value].image
+                                .toString(),
+                            fit: BoxFit.contain,
+                          ),
+                          width: screen.width * 0.5,
+                          height: screen.height * 0.45,
+                        ),
                       ),
-                      width: screen.width * 0.5,
-                      height: screen.height * 0.45,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const SizedBox(
-                          height: 24,
+                      Padding(
+                        padding: const EdgeInsets.all(16),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const SizedBox(
+                              height: 24,
+                            ),
+                            Text(
+                              controller
+                                  .pages[controller.currentIndex.value].title
+                                  .toString(),
+                              style: const TextStyle(
+                                fontSize: 54,
+                                fontWeight: FontWeight.w500,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                            const SizedBox(
+                              height: 24,
+                            ),
+                            Text(
+                              controller.pages[controller.currentIndex.value]
+                                  .description
+                                  .toString(),
+                              style: const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                                letterSpacing: 1.1,
+                                height: 1.5,
+                              ),
+                              softWrap: true,
+                              textAlign: TextAlign.center,
+                            ),
+                            const SizedBox(
+                              height: 24,
+                            ),
+                          ],
                         ),
-                        Text(
-                          controller.pages[controller.currentIndex.value].title
-                              .toString(),
-                          style: const TextStyle(
-                            fontSize: 54,
-                            fontWeight: FontWeight.w500,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                        const SizedBox(
-                          height: 24,
-                        ),
-                        Text(
-                          controller
-                              .pages[controller.currentIndex.value].description
-                              .toString(),
-                          style: const TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            letterSpacing: 1.1,
-                            height: 1.5,
-                          ),
-                          softWrap: true,
-                          textAlign: TextAlign.center,
-                        ),
-                        const SizedBox(
-                          height: 24,
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              );
+                      )
+                    ],
+                  ));
             },
             itemCount: controller.pages.length,
             onPageChanged: (int index) {
@@ -97,7 +99,7 @@ class OnboardingScreen extends GetResponsiveView<OnboardingController> {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    Get.toNamed(AppRoutes.signup);
+                    controller.pageChange(2);
                   },
                   child: const Text(
                     "Skip",
@@ -117,7 +119,7 @@ class OnboardingScreen extends GetResponsiveView<OnboardingController> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    controller.pageChange(controller.currentIndex.value + 1);
+                    controller.pageChange(controller.currentIndex.value);
                     controller.pageController
                         .jumpToPage(controller.currentIndex.value);
                   },
@@ -343,7 +345,7 @@ class OnboardingScreen extends GetResponsiveView<OnboardingController> {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    Get.toNamed(AppRoutes.signup);
+                    controller.pageChange(2);
                   },
                   child: const Text(
                     "Skip",
@@ -364,8 +366,7 @@ class OnboardingScreen extends GetResponsiveView<OnboardingController> {
                 ElevatedButton(
                   onPressed: () {
                     controller.pageChange(controller.currentIndex.value + 1);
-                    controller.pageController
-                        .jumpToPage(controller.currentIndex.value);
+                    controller.nextPage();
                   },
                   child: const Text("Next"),
                   style: ButtonStyle(

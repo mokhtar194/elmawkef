@@ -3,13 +3,13 @@ import 'package:elmawkef_inc/app/models/onboarding.dart';
 import 'package:elmawkef_inc/app/router/routers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 
 
 class OnboardingController extends GetxController {
   late List<OnboardModel> pages;
-  late RxInt index;
   late RxInt currentIndex;
   late PageController pageController;
 
@@ -17,7 +17,6 @@ class OnboardingController extends GetxController {
   void onInit() async {
     super.onInit();
     currentIndex = 0.obs;
-    index = 0.obs;
     pageController = PageController();
     pages = [
       const OnboardModel(
@@ -40,13 +39,25 @@ class OnboardingController extends GetxController {
 
   void pageChange(int position) async {
     if (currentIndex.value == 2) {
+      _updateSeen();
       Get.offNamed(AppRoutes.signup);
-
     } else {
       currentIndex.value = position;
     }
   }
 
+  void nextPage(){
+    pageController.animateToPage(pageController.page!.toInt() + 1,
+        duration: const Duration(milliseconds: 400),
+        curve: Curves.easeIn
+    );
+  }
+
+
+  void _updateSeen() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool('seen', true);
+  }
   @override
   void onReady() {}
 
