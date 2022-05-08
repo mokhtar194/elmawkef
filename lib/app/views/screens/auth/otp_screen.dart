@@ -303,6 +303,8 @@ class OtpScreen extends GetResponsiveView {
                           color: Colors.green.shade600,
                           fontWeight: FontWeight.bold,
                         ),
+                        autoFocus: true,
+                        enablePinAutofill: true,
                         length: 6,
                         obscureText: false,
                         animationType: AnimationType.fade,

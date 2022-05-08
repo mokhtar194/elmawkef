@@ -1,3 +1,4 @@
+import 'package:elmawkef_inc/app/controllers/bottom_nav.dart';
 import 'package:elmawkef_inc/app/views/components/category.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -5,6 +6,9 @@ import 'package:get/get.dart';
 import '../components/view_all.dart';
 
 class AllCategories extends GetResponsiveView {
+
+  final bottom =
+  Get.put(BottomNavigationController(), permanent: false);
   @override
   Widget? phone() {
     return Scaffold(

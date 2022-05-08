@@ -37,10 +37,7 @@ class OtpController extends GetxController {
     prefs.setBool('singIn', true);
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-  }
+
 
   @override
   void onReady() {}
