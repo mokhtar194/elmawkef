@@ -1,9 +1,12 @@
+import 'package:elmawkef_inc/app/controllers/bottom_nav.dart';
 import 'package:elmawkef_inc/app/views/components/section_title.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class EmptyBooking extends StatelessWidget {
   EmptyBooking({Key? key, @required this.screen}) : super(key: key);
   final screen;
+  final bottomNavController = Get.put(BottomNavigationController());
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +29,7 @@ class EmptyBooking extends StatelessWidget {
                 elevation: 1,
                 child: Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 36, vertical: 48),
+                  const EdgeInsets.symmetric(horizontal: 36, vertical: 48),
                   child: Column(
                     children: [
                       SizedBox(
@@ -64,7 +67,9 @@ class EmptyBooking extends StatelessWidget {
                         height: 24,
                       ),
                       ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            bottomNavController.updateIndex(0);
+                          },
                           child: Text(
                             'View All Services',
                           ))

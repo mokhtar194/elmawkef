@@ -3,14 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class NavBottom extends GetResponsiveView<BottomNavigationController> {
-  final bottomNavController =
-      Get.put(BottomNavigationController(), permanent: false);
-
-  @override
-  Widget? desktop() {}
-
-  @override
-  Widget? tablet() {}
+  final bottomNavController = Get.put(BottomNavigationController());
 
   @override
   Widget? phone() {
