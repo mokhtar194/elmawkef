@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 project(runner LANGUAGES CXX)
 
-set(BINARY_NAME "elmawkef_inc")
+set(BINARY_NAME "Elmawkef")
 set(APPLICATION_ID "com.elmawkef.inc.elmawkef_inc")
 
 cmake_policy(SET CMP0063 NEW)

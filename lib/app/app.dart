@@ -17,7 +17,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.home,
+      initialRoute: AppRoutes.splash,
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
@@ -29,7 +29,7 @@ class App extends StatelessWidget {
         Locale('ar')
       ],
       translations: AppTranslations(),
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.system,
       theme: lightTheme,
       darkTheme: darkTheme,
       locale: Get.deviceLocale,
