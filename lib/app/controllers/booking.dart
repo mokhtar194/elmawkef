@@ -6,6 +6,7 @@ class BookingController extends GetxController {
   @override
   void onInit() {
     bookingsList = [];
+    super.onInit();
   }
 
   @override

@@ -15,7 +15,7 @@ ThemeData lightTheme = FlexThemeData.light(
   surfaceMode: FlexSurfaceMode.highSurfaceLowScaffold,
   blendLevel: 4,
   appBarStyle: FlexAppBarStyle.custom,
-  transparentStatusBar: false,
+  transparentStatusBar: true,
   appBarElevation: 2.0,
   tabBarStyle: FlexTabBarStyle.forBackground,
   subThemesData: const FlexSubThemesData(

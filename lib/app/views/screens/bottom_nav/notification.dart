@@ -6,16 +6,6 @@ class NotificationScreen extends GetResponsiveView{
 
 
   @override
-  Widget? desktop() {
-
-  }
-
-  @override
-  Widget? tablet() {
-
-  }
-
-  @override
   Widget? phone() {
     return Container(
       color: Colors.yellow,

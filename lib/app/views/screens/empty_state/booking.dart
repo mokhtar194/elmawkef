@@ -17,7 +17,7 @@ class EmptyBooking extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           SectionTitle(
-            text: "Bookings",
+            text: "Bookings".tr,
             alignment: MainAxisAlignment.start,
           ),
           SizedBox(
@@ -55,7 +55,8 @@ class EmptyBooking extends StatelessWidget {
                         height: 24,
                       ),
                       Text(
-                        "Currently you don’t have any upcoming order. Place and track your orders from here.",
+                        "Currently you don’t have any upcoming order. Place and track your orders from here."
+                            .tr,
                         style: const TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w600,
@@ -71,7 +72,7 @@ class EmptyBooking extends StatelessWidget {
                             bottomNavController.updateIndex(0);
                           },
                           child: Text(
-                            'View All Services',
+                            'View All Services'.tr,
                           ))
                     ],
                   ),

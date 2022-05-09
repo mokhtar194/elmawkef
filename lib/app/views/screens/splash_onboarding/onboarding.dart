@@ -101,8 +101,8 @@ class OnboardingScreen extends GetResponsiveView<OnboardingController> {
                   onPressed: () {
                     controller.pageChange(2);
                   },
-                  child: const Text(
-                    "Skip",
+                  child: Text(
+                    "Skip".tr,
                     style: TextStyle(color: Colors.blueGrey),
                   ),
                   style: ButtonStyle(
@@ -347,8 +347,8 @@ class OnboardingScreen extends GetResponsiveView<OnboardingController> {
                   onPressed: () {
                     controller.pageChange(2);
                   },
-                  child: const Text(
-                    "Skip",
+                  child: Text(
+                    "Skip".tr,
                     style: TextStyle(color: Colors.blueGrey),
                   ),
                   style: ButtonStyle(
@@ -368,7 +368,7 @@ class OnboardingScreen extends GetResponsiveView<OnboardingController> {
                     controller.pageChange(controller.currentIndex.value + 1);
                     controller.nextPage();
                   },
-                  child: const Text("Next"),
+                  child: Text("Next".tr),
                   style: ButtonStyle(
                     padding: MaterialStateProperty.all(
                       EdgeInsets.symmetric(horizontal: screen.width * 0.1),

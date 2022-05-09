@@ -8,15 +8,15 @@ class NavBottom extends GetResponsiveView<BottomNavigationController> {
   @override
   Widget? phone() {
     return BottomNavigationBar(
-      items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: "Home"),
+      items: [
         BottomNavigationBarItem(
-            icon: Icon(Icons.list_alt_outlined), label: "Bookings"),
+            icon: Icon(Icons.home_outlined), label: "Home".tr),
+        BottomNavigationBarItem(icon: Icon(Icons.search), label: "Services".tr),
         BottomNavigationBarItem(
-            icon: Icon(Icons.messenger_outline_rounded), label: "Chat"),
+            icon: Icon(Icons.list_alt_outlined), label: "Booking".tr),
         BottomNavigationBarItem(
             icon: Icon(Icons.notifications_none_outlined),
-            label: "Notification"),
+            label: "Notification".tr),
       ],
       currentIndex: bottomNavController.index.value,
       onTap: (int index) {

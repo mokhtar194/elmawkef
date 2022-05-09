@@ -1,6 +1,6 @@
-import 'package:elmawkef_inc/app/views/screens/all_categories.dart';
 import 'package:elmawkef_inc/app/views/screens/auth/otp_screen.dart';
 import 'package:elmawkef_inc/app/views/screens/auth/signup.dart';
+import 'package:elmawkef_inc/app/views/screens/categories.dart';
 import 'package:elmawkef_inc/app/views/screens/dashboard.dart';
 import 'package:elmawkef_inc/app/views/screens/splash_onboarding/onboarding.dart';
 import 'package:elmawkef_inc/app/views/screens/splash_onboarding/splash.dart';
@@ -10,9 +10,9 @@ import 'routers.dart';
 
 class Pages {
   static get route => <GetPage>[
-    GetPage(
-      name: AppRoutes.splash,
-      page: () => Splash(),
+        GetPage(
+          name: AppRoutes.splash,
+          page: () => Splash(),
         ),
         GetPage(
           name: AppRoutes.onboarding,
@@ -37,7 +37,7 @@ class Pages {
         ),
         GetPage(
           name: AppRoutes.allCategories,
-          page: () => AllCategories(),
+          page: () => Categories(),
         ),
       ];
 }

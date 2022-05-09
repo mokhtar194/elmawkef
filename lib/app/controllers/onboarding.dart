@@ -19,21 +19,24 @@ class OnboardingController extends GetxController {
     currentIndex = 0.obs;
     pageController = PageController();
     pages = [
-      const OnboardModel(
+      OnboardModel(
           image: "assets/images/Onboarding1.png",
-          title: "Quick and Easy Booking",
+          title: "Quick and Easy Booking".tr,
           description:
-              "We offer a 3-step booking which solves your problem quickly and easily"),
-      const OnboardModel(
+              "We offer a 3-step booking which solves your problem quickly and easily"
+                  .tr),
+      OnboardModel(
           image: "assets/images/Onboarding2.png",
-          title: "Sercurity and Professionalism",
+          title: "Security and Professionalism".tr,
           description:
-              "All our domestic workers have transparent background and are well-trained "),
-      const OnboardModel(
+              "All our domestic workers have transparent background and are well-trained "
+                  .tr),
+      OnboardModel(
           image: "assets/images/Onboarding3.png",
-          title: "Give your home a Wow feeling",
+          title: "Give your home a Wow feeling".tr,
           description:
-              "We care about every small details to sastisfy your needs when you use our service"),
+              "We care about every small details to sastisfy your needs when you use our service"
+                  .tr),
     ];
   }
 

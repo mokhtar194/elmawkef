@@ -32,8 +32,9 @@ class App extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: lightTheme,
       darkTheme: darkTheme,
-      locale: Get.deviceLocale,
-      fallbackLocale: const Locale('en', 'US'),
+      locale: Locale('en', 'US'),
+      //Get.deviceLocale,
+      fallbackLocale: const Locale('ar'),
       getPages: Pages.route,
     );
   }

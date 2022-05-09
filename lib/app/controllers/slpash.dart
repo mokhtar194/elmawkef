@@ -13,7 +13,7 @@ class SplashController extends GetxController {
 
   @override
   void onReady() async {
-    await Future.delayed(const Duration(seconds: 2), () {});
+    await Future.delayed(const Duration(seconds: 1), () {});
     bool? seen = prefs.getBool('seen');
     if (seen == null || seen == false) {
       Get.offNamed(AppRoutes.onboarding);

@@ -271,8 +271,8 @@ class OtpScreen extends GetResponsiveView {
               ),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: screen.height * 0.01),
-                child: const Text(
-                  'Verify',
+                child:  Text(
+                  'Verify'.tr,
                   style: TextStyle(
                     fontSize: 36,
                     fontWeight: FontWeight.w500,
@@ -282,8 +282,8 @@ class OtpScreen extends GetResponsiveView {
               ),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: screen.height * 0.01),
-                child: const Text(
-                  'Please enter the verification code sent to your phone number',
+                child:  Text(
+                  'Please enter the verification code sent to your phone number'.tr,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 14,
@@ -335,8 +335,8 @@ class OtpScreen extends GetResponsiveView {
                     ),
                     TextButton(
                       onPressed: () {},
-                      child: const Text(
-                        "Resend your code",
+                      child:  Text(
+                        "Resend your code".tr,
                         style: TextStyle(
                           color: AppColors.primary,
                         ),
@@ -351,7 +351,7 @@ class OtpScreen extends GetResponsiveView {
                   onPressed: () {
                     controller.verifyOTP();
                   },
-                  child: const Text("Confirm"),
+                  child:  Text("Confirm"),
                   style: ButtonStyle(
                     padding: MaterialStateProperty.all(
                       EdgeInsets.symmetric(horizontal: screen.width * 0.1),

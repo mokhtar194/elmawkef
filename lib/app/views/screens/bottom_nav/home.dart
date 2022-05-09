@@ -3,7 +3,6 @@ import 'package:elmawkef_inc/app/router/routers.dart';
 import 'package:elmawkef_inc/app/views/components/category.dart';
 import 'package:elmawkef_inc/app/views/components/view_all.dart';
 import 'package:elmawkef_inc/app/views/screens/shared/drawer.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -50,7 +49,7 @@ class Home extends GetResponsiveView {
             children: [
               Column(
                 children: [
-                  Text('Current Location'),
+                  Text('Current Location'.tr),
                   Text('15A, James Street'),
                 ],
               ), // <-- Text
@@ -85,7 +84,7 @@ class Home extends GetResponsiveView {
                     height: 8,
                   ),
                   Text(
-                    "What you are Searching about",
+                    "What you are Searching about".tr,
                     style: Theme.of(screen.context).textTheme.headlineMedium,
                   ),
                   const SizedBox(
@@ -93,8 +92,8 @@ class Home extends GetResponsiveView {
                   ),
                   TextField(
                     decoration: InputDecoration(
-                      border: const OutlineInputBorder(),
-                      labelText: 'Enter what you search !',
+                      border: OutlineInputBorder(),
+                      labelText: 'Enter what you search'.tr,
                       suffixIcon: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: IconButton(
@@ -145,7 +144,7 @@ class Home extends GetResponsiveView {
                     onClick: () {},
                   ),
                   Category(
-                    name: 'See All',
+                    name: 'See All'.tr,
                     icon: const Icon(Icons.arrow_forward_outlined),
                     color: Colors.blueGrey.shade900.withOpacity(0.9),
                     onClick: () {
@@ -167,8 +166,8 @@ class Home extends GetResponsiveView {
                   padding:
                       const EdgeInsets.only(left: 20.0, top: 10.0, right: 10.0),
                   child: ViewAll(
-                    title: "Recent",
-                    buttonTitle: "See All",
+                    title: "Recent".tr,
+                    buttonTitle: "See All".tr,
                     onPressed: () {},
                   ),
                 ),

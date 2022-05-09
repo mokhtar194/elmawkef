@@ -5,10 +5,9 @@ import 'package:get/get.dart';
 
 import '../components/view_all.dart';
 
-class AllCategories extends GetResponsiveView {
+class Categories extends GetResponsiveView {
+  final bottom = Get.put(BottomNavigationController());
 
-  final bottom =
-  Get.put(BottomNavigationController(), permanent: false);
   @override
   Widget? phone() {
     return Scaffold(
@@ -21,7 +20,8 @@ class AllCategories extends GetResponsiveView {
             child: TextField(
               decoration: InputDecoration(
                 border: const OutlineInputBorder(),
-                labelText: 'Enter what you search !',
+                labelText: 'Enter what you search'.tr,
+                floatingLabelBehavior: FloatingLabelBehavior.never,
                 suffixIcon: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: IconButton(
@@ -46,7 +46,7 @@ class AllCategories extends GetResponsiveView {
                 padding:
                     const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
                 child: ViewAll(
-                  title: "All Categories",
+                  title: "All Categories".tr,
                   buttonTitle: '',
                   onPressed: () {},
                 ),

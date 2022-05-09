@@ -37,51 +37,66 @@ class _AppDrawerState extends State<AppDrawer> {
                 color: Theme.of(widget.screen.context).colorScheme.primary),
           ),
           TextButton(
-            child: const ListTile(
+            child: ListTile(
               leading: Icon(Icons.calendar_today_outlined),
-              title: Text('Calendar'),
+              title: Text('Calendar'.tr),
             ),
             onPressed: () {},
           ),
           TextButton(
-            child: const ListTile(
+            child: ListTile(
               leading: Icon(Icons.add_location),
-              title: Text('Address'),
+              title: Text('Address'.tr),
             ),
             onPressed: () {},
           ),
           TextButton(
-            child: const ListTile(
+            child: ListTile(
               leading: Icon(Icons.phone),
-              title: Text('Support'),
+              title: Text('Support'.tr),
             ),
             onPressed: () {},
           ),
           TextButton(
-            child: const ListTile(
+            child: ListTile(
               leading: Icon(Icons.local_offer_outlined),
-              title: Text('Offers'),
+              title: Text('Offers'.tr),
             ),
             onPressed: () {},
           ),
           TextButton(
-            child: const ListTile(
+            child: ListTile(
               leading: Icon(Icons.notifications),
-              title: Text('Notification'),
+              title: Text('Notification'.tr),
             ),
             onPressed: () {},
           ),
           Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: EdgeInsets.all(16.0),
             child: CupertinoSlidingSegmentedControl(
-              children: const {
-                0: Text("Light"),
-                1: Text("Dark"),
+              children: {
+                0: Text("Light".tr),
+                1: Text("Dark".tr),
               },
               groupValue: Get.isDarkMode ? 1 : 0,
               onValueChanged: (value) {
                 Get.changeThemeMode(
                     value == 0 ? ThemeMode.light : ThemeMode.dark);
+              },
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(16.0),
+            child: CupertinoSlidingSegmentedControl(
+              children: {
+                0: Text("English"),
+                1: Text("Arabic"),
+              },
+              groupValue: Get.locale == Locale('en', 'US') ? 0 : 1,
+              onValueChanged: (value) {
+                Get.updateLocale(
+                    value == 0 ? Locale('en', 'US') : Locale('ar'));
               },
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             ),
