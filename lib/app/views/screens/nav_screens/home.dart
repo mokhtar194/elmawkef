@@ -1,6 +1,7 @@
 import 'package:elmawkef_inc/app/controllers/home_page.dart';
 import 'package:elmawkef_inc/app/router/routers.dart';
 import 'package:elmawkef_inc/app/views/components/category.dart';
+import 'package:elmawkef_inc/app/views/components/service_card.dart';
 import 'package:elmawkef_inc/app/views/components/view_all.dart';
 import 'package:elmawkef_inc/app/views/screens/shared/drawer.dart';
 import 'package:flutter/material.dart';
@@ -64,6 +65,18 @@ class Home extends GetResponsiveView {
             ],
           ),
         ),
+        actions: [
+          Padding(
+            padding: EdgeInsets.only(right: 12),
+            child: IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.post_add,
+                size: 28,
+              ),
+            ),
+          ),
+        ],
       ),
       body: ListView(
         padding: const EdgeInsets.all(8),
@@ -168,7 +181,9 @@ class Home extends GetResponsiveView {
                   child: ViewAll(
                     title: "Recent".tr,
                     buttonTitle: "See All".tr,
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.toNamed(AppRoutes.services);
+                    },
                   ),
                 ),
                 SizedBox(
@@ -178,18 +193,16 @@ class Home extends GetResponsiveView {
                       itemCount: 20,
                       physics: const BouncingScrollPhysics(),
                       itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.all(2.0),
-                          child: Column(
-                            children: [
-                              Image.network(
-                                "https://purepng.com/public/uploads/large/purepng.com-mariomariofictional-charactervideo-gamefranchisenintendodesigner-1701528634653vywuz.png",
-                                width: screen.width * 0.3,
-                                height: screen.height * 0.2,
-                              ),
-                              Text("Mario $index ")
-                            ],
-                          ),
+                        return ServiceCard(
+                          title: 'Toto $index',
+                          image:
+                              "https://purepng.com/public/uploads/large/purepng.com-mariomariofictional-charactervideo-gamefranchisenintendodesigner-1701528634653vywuz.png",
+                          screen: screen,
+                          onPress: () {
+                            Get.toNamed(AppRoutes.service);
+                          },
+                          width: screen.width * 0.3,
+                          height: screen.height * 0.2,
                         );
                       }),
                 ),

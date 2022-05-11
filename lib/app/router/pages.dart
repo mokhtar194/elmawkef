@@ -1,7 +1,11 @@
+import 'package:elmawkef_inc/app/models/service.dart';
 import 'package:elmawkef_inc/app/views/screens/auth/otp_screen.dart';
 import 'package:elmawkef_inc/app/views/screens/auth/signup.dart';
 import 'package:elmawkef_inc/app/views/screens/categories.dart';
-import 'package:elmawkef_inc/app/views/screens/dashboard.dart';
+import 'package:elmawkef_inc/app/views/screens/navigation_stack.dart';
+import 'package:elmawkef_inc/app/views/screens/profile.dart';
+import 'package:elmawkef_inc/app/views/screens/services.dart';
+import 'package:elmawkef_inc/app/views/screens/single_service.dart';
 import 'package:elmawkef_inc/app/views/screens/splash_onboarding/onboarding.dart';
 import 'package:elmawkef_inc/app/views/screens/splash_onboarding/splash.dart';
 import 'package:get/get.dart';
@@ -38,6 +42,19 @@ class Pages {
         GetPage(
           name: AppRoutes.allCategories,
           page: () => Categories(),
+        ),
+        GetPage(
+          name: AppRoutes.services,
+          page: () => Services(),
+        ),
+        GetPage(
+          name: AppRoutes.profile,
+          page: () => Profile(),
+        ),
+        GetPage(
+          name: AppRoutes.service,
+          page: () => SingleServer(),
+          arguments: Service,
         ),
       ];
 }

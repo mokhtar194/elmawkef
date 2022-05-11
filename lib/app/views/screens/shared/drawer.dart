@@ -1,3 +1,4 @@
+import 'package:elmawkef_inc/app/router/routers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -38,10 +39,12 @@ class _AppDrawerState extends State<AppDrawer> {
           ),
           TextButton(
             child: ListTile(
-              leading: Icon(Icons.calendar_today_outlined),
-              title: Text('Calendar'.tr),
+              leading: Icon(Icons.person),
+              title: Text('Profile'.tr),
             ),
-            onPressed: () {},
+            onPressed: () {
+              Get.toNamed(AppRoutes.profile);
+            },
           ),
           TextButton(
             child: ListTile(

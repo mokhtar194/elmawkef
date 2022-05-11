@@ -14,9 +14,6 @@ class NavBottom extends GetResponsiveView<BottomNavigationController> {
         BottomNavigationBarItem(icon: Icon(Icons.search), label: "Services".tr),
         BottomNavigationBarItem(
             icon: Icon(Icons.list_alt_outlined), label: "Booking".tr),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.notifications_none_outlined),
-            label: "Notification".tr),
       ],
       currentIndex: bottomNavController.index.value,
       onTap: (int index) {

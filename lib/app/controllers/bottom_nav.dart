@@ -1,9 +1,11 @@
-import 'package:elmawkef_inc/app/views/screens/bottom_nav/booking.dart';
-import 'package:elmawkef_inc/app/views/screens/bottom_nav/chat.dart';
-import 'package:elmawkef_inc/app/views/screens/bottom_nav/home.dart';
+
+import 'package:elmawkef_inc/app/views/screens/nav_screens/booking.dart';
 import 'package:elmawkef_inc/app/views/screens/services.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+
+import '../views/screens/nav_screens/home.dart';
 
 class BottomNavigationController extends GetxController {
   late List<Widget> pages;
@@ -15,7 +17,6 @@ class BottomNavigationController extends GetxController {
       Home(),
       Services(),
       Booking(),
-      Chat(),
     ];
     index = 0.obs;
   }

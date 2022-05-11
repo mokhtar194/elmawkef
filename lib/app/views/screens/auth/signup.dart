@@ -1,3 +1,4 @@
+import 'package:elmawkef_inc/app/controllers/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
@@ -7,6 +8,8 @@ import '../../../controllers/signup.dart';
 class SignUp extends GetResponsiveView<SignUpController> {
   @override
   final controller = Get.put(SignUpController());
+  ConnectivityController connectivityController =
+      Get.put(ConnectivityController());
 
   @override
   Widget? desktop() {
@@ -111,7 +114,6 @@ class SignUp extends GetResponsiveView<SignUpController> {
                   child: ElevatedButton(
                     onPressed: () async {
                       print("number is : ${controller.number.toString()}");
-
                     },
                     child: const Text("Next"),
                     style: ButtonStyle(
@@ -320,8 +322,7 @@ class SignUp extends GetResponsiveView<SignUpController> {
                             keyboardType: const TextInputType.numberWithOptions(
                                 signed: true, decimal: true),
                             inputBorder: const OutlineInputBorder(),
-                            onSaved: (PhoneNumber number) {
-                            },
+                            onSaved: (PhoneNumber number) {},
                           ),
                         ],
                       ),
@@ -346,6 +347,44 @@ class SignUp extends GetResponsiveView<SignUpController> {
                   ),
                 ),
               ),
+              // GetBuilder<ConnectivityController>(
+              //     builder: (builder) {
+              //       if (connectivityController.connectionType.value == 0) {
+              //         Get.snackbar(
+              //           "GeeksforGeeks",
+              //           "Hello everyone",
+              //           icon: Icon(Icons.person, color: Colors.white),
+              //           snackPosition: SnackPosition.BOTTOM,
+              //           backgroundColor: Colors.green,
+              //           borderRadius: 20,
+              //           margin: EdgeInsets.all(15),
+              //           colorText: Colors.white,
+              //           duration: Duration(hours: 4),
+              //           isDismissible: true,
+              //           // dismissDirection: SnackDismissDirection.HORIZONTAL,
+              //           forwardAnimationCurve: Curves.easeOutBack,
+              //         );
+              //         return Container();
+              //       } else {
+              //         Get.snackbar(
+              //           "GeeksforGeeks",
+              //           "Hello everyone",
+              //           icon: Icon(Icons.person, color: Colors.white),
+              //           snackPosition: SnackPosition.BOTTOM,
+              //           backgroundColor: Colors.red,
+              //           borderRadius: 20,
+              //           margin: EdgeInsets.all(15),
+              //           colorText: Colors.white,
+              //           duration: Duration(seconds: 4),
+              //           isDismissible: true,
+              //           // dismissDirection: SnackDismissDirection.HORIZONTAL,
+              //           forwardAnimationCurve: Curves.easeOutBack,
+              //         );
+              //         return Container();
+              //       }
+              //       return Container();
+              //     },
+              //   ),
             ],
           ),
         ),

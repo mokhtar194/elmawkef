@@ -13,7 +13,7 @@ class SignUpController extends GetxController {
   late String initialCountry;
   late final FirebaseAuth auth;
   late SharedPreferences prefs;
- late RxBool isVerifyingNumber ;
+  late RxBool isVerifyingNumber;
   PhoneNumber number = PhoneNumber(isoCode: 'MA');
 
   @override
@@ -54,6 +54,6 @@ class SignUpController extends GetxController {
   @override
   void onClose() {
     phoneController.dispose();
-    phoneController.dispose();
+    nameController.dispose();
   }
 }

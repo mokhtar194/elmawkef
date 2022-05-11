@@ -25,7 +25,9 @@ class Categories extends GetResponsiveView {
                 suffixIcon: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+
+                    },
                     icon: const Icon(
                       Icons.search,
                     ),
