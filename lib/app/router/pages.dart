@@ -1,4 +1,4 @@
-import 'package:elmawkef_inc/app/models/service.dart';
+import 'package:elmawkef_inc/app/models/work.dart';
 import 'package:elmawkef_inc/app/views/screens/auth/otp_screen.dart';
 import 'package:elmawkef_inc/app/views/screens/auth/signup.dart';
 import 'package:elmawkef_inc/app/views/screens/categories.dart';
@@ -10,6 +10,7 @@ import 'package:elmawkef_inc/app/views/screens/splash_onboarding/onboarding.dart
 import 'package:elmawkef_inc/app/views/screens/splash_onboarding/splash.dart';
 import 'package:get/get.dart';
 
+import '../controllers/single_service.dart';
 import 'routers.dart';
 
 class Pages {
@@ -53,8 +54,12 @@ class Pages {
         ),
         GetPage(
           name: AppRoutes.service,
-          page: () => SingleServer(),
-          arguments: Service,
+          page: () => SingleService(),
+          arguments: WorkModel,
+          binding: BindingsBuilder(() {
+            Get.lazyPut<SingleServiceController>(
+                () => SingleServiceController());
+          }),
         ),
       ];
 }

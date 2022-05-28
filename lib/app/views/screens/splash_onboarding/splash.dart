@@ -1,6 +1,5 @@
 
 import 'package:elmawkef_inc/app/controllers/slpash.dart';
-import 'package:elmawkef_inc/app/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -8,80 +7,12 @@ class Splash extends GetResponsiveView<SplashController> {
 
   @override
   final controller = Get.put(SplashController());
-  @override
-  Widget? desktop() {
-    return Scaffold(
-      backgroundColor: AppColors.primary,
-      body: Container(
-        alignment: Alignment.center,
-        padding: EdgeInsets.symmetric(horizontal: screen.width * 0.35),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            SizedBox(
-              width: 112,
-              height: 112,
-              child: Image.asset(
-                'assets/logo.png',
-              ),
-            ),
-            RichText(
-              text: const TextSpan(
-                text: "Elma",
-                children: [
-                  TextSpan(
-                    text: "Wkef",
-                    style: TextStyle(color: Colors.redAccent, fontSize: 52),
-                  ),
-                ],
-                style: TextStyle(color: Colors.white, fontSize: 52),
-              ),
-            )
-          ],
-        ),
-      ),
-    );
-  }
 
-  @override
-  Widget? tablet() {
-    return Scaffold(
-      backgroundColor: AppColors.primary,
-      body: Container(
-        alignment: Alignment.center,
-        padding: EdgeInsets.symmetric(horizontal: screen.width * 0.2),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            SizedBox(
-              width: 112,
-              height: 112,
-              child: Image.asset(
-                'assets/logo.png',
-              ),
-            ),
-            RichText(
-              text: const TextSpan(
-                text: "Elma",
-                children: [
-                  TextSpan(
-                    text: "Wkef",
-                    style: TextStyle(color: Colors.redAccent, fontSize: 52),
-                  ),
-                ],
-                style: TextStyle(color: Colors.white, fontSize: 52),
-              ),
-            )
-          ],
-        ),
-      ),
-    );
-  }
 
   @override
   Widget? phone() {
     return Scaffold(
-      backgroundColor: AppColors.primary,
+      backgroundColor: Get.isDarkMode ? Colors.black45 : Colors.white,
       body: Container(
         alignment: Alignment.center,
         padding: EdgeInsets.symmetric(horizontal: screen.width * 0.2),
@@ -92,19 +23,25 @@ class Splash extends GetResponsiveView<SplashController> {
               width: 86,
               height: 86,
               child: Image.asset(
-                'assets/logo.png',
+                Get.isDarkMode ? 'assets/logo_dark.png' : 'assets/logo.png',
               ),
             ),
             RichText(
-              text: const TextSpan(
+              text: TextSpan(
                 text: "Elma",
                 children: [
                   TextSpan(
                     text: "Wkef",
-                    style: TextStyle(color: Colors.redAccent, fontSize: 28),
+                    style: TextStyle(
+                        color:
+                            Get.isDarkMode ? Color(0xff03DAC5) : Colors.black,
+                        fontSize: 28),
                   ),
                 ],
-                style: TextStyle(color: Colors.white, fontSize: 28),
+                style: TextStyle(
+                    color:
+                        Get.isDarkMode ? Color(0xffBB86FC) : Colors.blueAccent,
+                    fontSize: 28),
               ),
             )
           ],

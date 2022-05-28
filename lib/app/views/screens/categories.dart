@@ -1,12 +1,14 @@
 import 'package:elmawkef_inc/app/controllers/bottom_nav.dart';
-import 'package:elmawkef_inc/app/views/components/category.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get/get.dart';import '../../controllers/categories.dart';
 
+
+import '../components/category.dart';
 import '../components/view_all.dart';
 
 class Categories extends GetResponsiveView {
   final bottom = Get.put(BottomNavigationController());
+  CategoryController service = CategoryController();
 
   @override
   Widget? phone() {
@@ -62,14 +64,9 @@ class Categories extends GetResponsiveView {
                           maxCrossAxisExtent: screen.width * 0.3,
                           crossAxisSpacing: 3,
                           mainAxisSpacing: 4),
-                      itemCount: 200,
+                      itemCount: service.categires.length,
                       itemBuilder: (BuildContext ctx, index) {
-                        return Category(
-                          name: 'Mario',
-                          icon: const Icon(Icons.add),
-                          color: Colors.deepOrange,
-                          onClick: () {},
-                        );
+                        return service.categires[index];
                       }),
                 ),
               ),

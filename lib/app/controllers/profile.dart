@@ -17,6 +17,7 @@ class ProfileController extends GetxController {
   void onInit() {
     becomePro = false.obs;
     counter = 0.obs;
+
   }
 
   void inc() {

@@ -1,4 +1,3 @@
-
 import 'package:elmawkef_inc/app/router/pages.dart';
 import 'package:elmawkef_inc/app/translations/app_translation.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +8,6 @@ import 'router/routers.dart';
 import 'themes/dark/v1/dark.dart';
 import 'themes/light/v1/light.dart';
 
-
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
 
@@ -17,7 +15,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.home,
+      initialRoute: AppRoutes.splash,
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
@@ -32,9 +30,9 @@ class App extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: lightTheme,
       darkTheme: darkTheme,
-      locale: Locale('en', 'US'),
+      locale: Locale('fr', 'FR'),
       //Get.deviceLocale,
-      fallbackLocale: const Locale('ar'),
+      fallbackLocale: const Locale('fr', 'FR'),
       getPages: Pages.route,
     );
   }

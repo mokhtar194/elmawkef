@@ -29,9 +29,6 @@ class _AppDrawerState extends State<AppDrawer> {
                 const SizedBox(
                   width: 16,
                 ),
-                Text(
-                  'John Doe',
-                ),
               ],
             ),
             decoration: BoxDecoration(
@@ -75,6 +72,15 @@ class _AppDrawerState extends State<AppDrawer> {
             onPressed: () {},
           ),
           Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            child: Divider(
+              height: 1,
+              thickness: 2,
+              indent: 16,
+              endIndent: 24,
+            ),
+          ),
+          Padding(
             padding: EdgeInsets.all(16.0),
             child: CupertinoSlidingSegmentedControl(
               children: {
@@ -93,13 +99,21 @@ class _AppDrawerState extends State<AppDrawer> {
             padding: EdgeInsets.all(16.0),
             child: CupertinoSlidingSegmentedControl(
               children: {
-                0: Text("English"),
-                1: Text("Arabic"),
+                0: Text("En"),
+                1: Text("Ar"),
+                2: Text("Fr"),
               },
-              groupValue: Get.locale == Locale('en', 'US') ? 0 : 1,
+              groupValue: Get.locale == Locale('en', 'US')
+                  ? 0
+                  : Get.locale == Locale('fr', 'FR')
+                      ? 2
+                      : 1,
               onValueChanged: (value) {
-                Get.updateLocale(
-                    value == 0 ? Locale('en', 'US') : Locale('ar'));
+                Get.updateLocale(value == 0
+                    ? Locale('en', 'US')
+                    : value == 2
+                        ? Locale('fr', 'FR')
+                        : Locale('ar'));
               },
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             ),

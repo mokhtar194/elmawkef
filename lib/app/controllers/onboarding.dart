@@ -1,12 +1,8 @@
-
 import 'package:elmawkef_inc/app/models/onboarding.dart';
 import 'package:elmawkef_inc/app/router/routers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-
-
 
 class OnboardingController extends GetxController {
   late List<OnboardModel> pages;

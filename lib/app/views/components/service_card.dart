@@ -29,9 +29,19 @@ class ServiceCard extends StatelessWidget {
               image.toString(),
               width: width, //screen.width * 0.3,
               height: height, // screen.height * 0.2,
-              fit: BoxFit.fitWidth,
+              fit: BoxFit.cover,
             ),
-            Text(title.toString())
+            SizedBox(
+              height: 2,
+            ),
+            Text(
+              title.toString(),
+              style: TextStyle(
+                overflow: TextOverflow.ellipsis,
+              ),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            )
           ],
         ),
       ),

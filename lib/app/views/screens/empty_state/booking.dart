@@ -44,7 +44,7 @@ class EmptyBooking extends StatelessWidget {
                         height: 24,
                       ),
                       Text(
-                        "No Upcoming Order",
+                        "No Upcoming Order".tr,
                         style: const TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.w500,

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
-class OtpScreen extends GetResponsiveView {
+class OtpScreen extends GetResponsiveView<OtpController> {
   @override
   final controller = Get.put(OtpController());
 

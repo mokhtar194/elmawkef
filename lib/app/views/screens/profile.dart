@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:gender_picker/source/enums.dart';
 import 'package:gender_picker/source/gender_picker.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
 class Profile extends GetResponsiveView<ProfileController> {
@@ -12,6 +13,7 @@ class Profile extends GetResponsiveView<ProfileController> {
   final controller = Get.put(ProfileController());
 
   // https://medium.com/flutter-community/create-custom-radio-input-in-flutter-8d94a273d374
+  XFile? image;
 
   @override
   Widget? phone() {
@@ -155,7 +157,7 @@ class Profile extends GetResponsiveView<ProfileController> {
                         dateHintText: 'Enter Date',
                       ),
                       Obx(
-                        () => !controller.becomePro.value
+                            () => !controller.becomePro.value
                             ? Container()
                             : Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -252,7 +254,7 @@ class Profile extends GetResponsiveView<ProfileController> {
                         height: 36,
                       ),
                       Obx(
-                        () => Center(
+                            () => Center(
                           child: ElevatedButton(
                             onPressed: () {
                               if (!controller.becomePro.value) {

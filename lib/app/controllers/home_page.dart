@@ -1,14 +1,16 @@
 import 'package:elmawkef_inc/app/models/service.dart';
-import 'package:flutter/material.dart';
+import 'package:elmawkef_inc/app/services/remote/services.dart';
 import 'package:get/get.dart';
 
 class HomePageController extends GetxController {
   late List<Service> services;
   late RxInt selectedService;
+  WorkService workService  = WorkService();
 
   @override
   void onInit() {
     selectedService = 4.obs;
+    workService = WorkService();
     services = [
       Service('Cleaning',
           'https://img.icons8.com/external-vitaliy-gorbachev-flat-vitaly-gorbachev/2x/external-cleaning-labour-day-vitaliy-gorbachev-flat-vitaly-gorbachev.png'),
@@ -34,43 +36,4 @@ class HomePageController extends GetxController {
 
   @override
   void onReady() {}
-
-  serviceContainer(String image, String name, int index) {
-    return GestureDetector(
-      onTap: () {
-        if (selectedService.value == index) {
-          selectedService.value = -1;
-        } else {
-          selectedService.value = index;
-        }
-      },
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 300),
-        decoration: BoxDecoration(
-          color: selectedService.value == index
-              ? Colors.blue.shade50
-              : Colors.grey.shade200,
-          border: Border.all(
-            color: selectedService.value == index
-                ? Colors.blue
-                : Colors.blue.withOpacity(0),
-            width: 2.0,
-          ),
-          borderRadius: BorderRadius.circular(16.0),
-        ),
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Image.network(image, height: 32),
-              const SizedBox(
-                height: 8,
-              ),
-              Text(
-                name,
-                style: const TextStyle(fontSize: 14,color: Colors.black45),
-              )
-            ]),
-      ),
-    );
-  }
 }

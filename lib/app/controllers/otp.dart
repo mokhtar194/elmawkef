@@ -23,9 +23,10 @@ class OtpController extends GetxController {
   void verifyOTP() async {
     PhoneAuthCredential credential = PhoneAuthProvider.credential(
         verificationId: verificationID, smsCode: otpController.text);
-
+      print('value is $verificationID');
+      print('sms is ${otpController.text}');
     await auth.signInWithCredential(credential).then(
-      (_) {
+          (_) {
         _updateSeen();
         Get.offAllNamed(AppRoutes.home);
       },
@@ -37,7 +38,10 @@ class OtpController extends GetxController {
     prefs.setBool('singIn', true);
   }
 
-
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   @override
   void onReady() {}
