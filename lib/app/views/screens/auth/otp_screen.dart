@@ -6,7 +6,7 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 
 class OtpScreen extends GetResponsiveView<OtpController> {
   @override
-  final controller = Get.put(OtpController());
+  final controller = Get.put(OtpController(), permanent: true);
 
   // @override
   // Widget? desktop() {

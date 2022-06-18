@@ -22,20 +22,6 @@ class Home extends GetResponsiveView {
       appBar: AppBar(
         centerTitle: false,
         title: Text("Elmawkef"),
-        actions: [
-          Padding(
-            padding: EdgeInsets.only(right: 12),
-            child: IconButton(
-              onPressed: () {
-                c.categories();
-              },
-              icon: Icon(
-                Icons.post_add,
-                size: 28,
-              ),
-            ),
-          ),
-        ],
       ),
       body: ListView(
         padding: const EdgeInsets.all(8),
@@ -48,9 +34,27 @@ class Home extends GetResponsiveView {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "HELLO ASHFAK",
-                    style: Theme.of(screen.context).textTheme.titleMedium,
+                  FutureBuilder<String?>(
+                    future: controller.getUserName(),
+                    builder: (BuildContext context,
+                        AsyncSnapshot<String?> snapshot) {
+                      if (snapshot.connectionState == ConnectionState.none) {
+                        return Text(
+                          "HELLO User",
+                          style: Theme.of(screen.context).textTheme.titleMedium,
+                        );
+                      }
+                      if (snapshot.hasData) {
+                        return Text(
+                          "HELLO ${snapshot.data}",
+                          style: Theme.of(screen.context).textTheme.titleMedium,
+                        );
+                      }
+                      return Text(
+                        "HELLO User",
+                        style: Theme.of(screen.context).textTheme.titleMedium,
+                      );
+                    },
                   ),
                   const SizedBox(
                     height: 8,
@@ -110,12 +114,6 @@ class Home extends GetResponsiveView {
                     onClick: () {},
                   ),
                   Category(
-                    name: 'Plomberie',
-                    icon: const Icon(Icons.water_drop_outlined),
-                    color: Colors.blue,
-                    onClick: () {},
-                  ),
-                  Category(
                     name: 'See All'.tr,
                     icon: const Icon(Icons.arrow_forward_outlined),
                     color: Colors.blueGrey.shade900.withOpacity(0.9),
@@ -171,7 +169,9 @@ class Home extends GetResponsiveView {
                                       serviceModel.samples[0].image,
                                   screen: screen,
                                   onPress: () {
-                                    Get.toNamed(AppRoutes.service,arguments: serviceModel);
+                                    Get.toNamed(AppRoutes.service,
+                                        arguments: serviceModel,
+                                        preventDuplicates: false);
                                   },
                                   width: screen.width * 0.4,
                                   height: screen.height * 0.2,
@@ -181,8 +181,8 @@ class Home extends GetResponsiveView {
                       }
                       return Center(
                         child: Shimmer.fromColors(
-                          baseColor: Colors.grey[350]!,
-                          highlightColor: Colors.grey[100]!,
+                          baseColor: Colors.grey.shade300,
+                          highlightColor: Colors.white,
                           child: ListView.builder(
                             itemCount: 6,
                             scrollDirection: Axis.horizontal,

@@ -60,6 +60,8 @@ class Pages {
             Get.lazyPut<SingleServiceController>(
                 () => SingleServiceController());
           }),
+          transition: Transition.fadeIn,
+          preventDuplicates: false,
         ),
       ];
 }

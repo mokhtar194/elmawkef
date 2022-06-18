@@ -1,3 +1,5 @@
+import 'package:colorize_text_avatar/colorize_text_avatar.dart';
+import 'package:elmawkef_inc/app/controllers/home_page.dart';
 import 'package:elmawkef_inc/app/router/routers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,27 +14,81 @@ class AppDrawer extends StatefulWidget {
 }
 
 class _AppDrawerState extends State<AppDrawer> {
+  final controller = Get.put(HomePageController());
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
         children: [
-          DrawerHeader(
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Container(
-                  width: widget.screen.width * 0.25,
-                  height: widget.screen.height * 0.15,
-                  color: Colors.blue,
+          FutureBuilder<String?>(
+            future: controller.getUserName(),
+            builder: (BuildContext context, AsyncSnapshot<String?> snapshot) {
+              if (snapshot.connectionState == ConnectionState.none) {
+                return DrawerHeader(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Container(
+                        width: widget.screen.width * 0.25,
+                        height: widget.screen.height * 0.15,
+                        color: Colors.blue,
+                      ),
+                      const SizedBox(
+                        width: 16,
+                      ),
+                    ],
+                  ),
+                  decoration: BoxDecoration(
+                      color:
+                          Theme.of(widget.screen.context).colorScheme.primary),
+                );
+              }
+              if (snapshot.hasData) {
+                return UserAccountsDrawerHeader(
+                  accountName: Text("${snapshot.data}"),
+                  accountEmail: FutureBuilder<String?>(
+                      future: controller.getPhoneNumber(),
+                      builder: (BuildContext context,
+                          AsyncSnapshot<String?> snapshot) {
+                        if (snapshot.connectionState == ConnectionState.none) {
+                          return Text("06-XX-XXX-XX");
+                        }
+                        if (snapshot.hasData) {
+                          Text("${snapshot.data}");
+                        }
+                        return Text("06-XX-XXX-XX");
+                      }),
+                  currentAccountPicture: TextAvatar(
+                      shape: Shape.Circular,
+                      size: 35,
+                      textColor: Colors.white,
+                      fontSize: 24,
+                      fontWeight: FontWeight.w400,
+                      upperCase: true,
+                      backgroundColor: Colors.black,
+                      numberLetters: 2,
+                      text: "${snapshot.data}"),
+                );
+              }
+              return DrawerHeader(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                      width: widget.screen.width * 0.25,
+                      height: widget.screen.height * 0.15,
+                      color: Colors.blue,
+                    ),
+                    const SizedBox(
+                      width: 16,
+                    ),
+                  ],
                 ),
-                const SizedBox(
-                  width: 16,
-                ),
-              ],
-            ),
-            decoration: BoxDecoration(
-                color: Theme.of(widget.screen.context).colorScheme.primary),
+                decoration: BoxDecoration(
+                    color: Theme.of(widget.screen.context).colorScheme.primary),
+              );
+            },
           ),
           TextButton(
             child: ListTile(

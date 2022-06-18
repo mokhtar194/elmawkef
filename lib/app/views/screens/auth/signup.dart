@@ -11,6 +11,8 @@ class SignUp extends GetResponsiveView<SignUpController> {
   ConnectivityController connectivityController =
       Get.put(ConnectivityController());
 
+  String  name = '';
+
   // @override
   // Widget? desktop() {
   //   return Scaffold(
@@ -299,6 +301,9 @@ class SignUp extends GetResponsiveView<SignUpController> {
                               } else
                                 return null;
                             },
+                            onChanged: (String val){
+                              name = val;
+                            },
                           ),
                           SizedBox(
                             height: screen.height * 0.025,
@@ -334,7 +339,8 @@ class SignUp extends GetResponsiveView<SignUpController> {
                 padding: EdgeInsets.symmetric(vertical: screen.height * 0.03),
                 child:  ElevatedButton(
                   onPressed: () {
-                    controller.verifyNumber(controller.number.toString());
+                    controller.verifyNumber(controller.number.toString(),
+                        name);
                   },
                   child: Text("Next".tr),
                   style: ButtonStyle(

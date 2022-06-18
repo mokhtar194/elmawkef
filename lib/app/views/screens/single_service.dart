@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:elmawkef_inc/app/controllers/booking.dart';
 import 'package:elmawkef_inc/app/controllers/single_service.dart';
 import 'package:elmawkef_inc/app/models/customer.dart';
 import 'package:elmawkef_inc/app/models/work.dart';
@@ -16,6 +17,7 @@ class SingleService extends GetResponsiveView<SingleServiceController> {
   @override
   final controller = Get.put(SingleServiceController());
   CustomerService customerService = CustomerService();
+  BookingController bookingController = Get.put(BookingController());
 
   @override
   Widget? phone() {
@@ -53,17 +55,17 @@ class SingleService extends GetResponsiveView<SingleServiceController> {
                   options: CarouselOptions(
                     autoPlay: true,
                     enlargeCenterPage: true,
-                    viewportFraction: 0.9,
-                    aspectRatio: 2.0,
-                    initialPage: 2,
+                    viewportFraction: 1.5,
+                    aspectRatio: 0.5,
+                    initialPage: 0,
                   ),
                 ),
               ),
               pinned: true,
             ),
-            SliverPadding(
-              padding: EdgeInsets.all(16),
-              sliver: SliverToBoxAdapter(
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: EdgeInsets.all(16),
                 child: FutureBuilder<CustomerModel>(
                   builder: (BuildContext context,
                       AsyncSnapshot<CustomerModel> snapshot) {
@@ -100,11 +102,25 @@ class SingleService extends GetResponsiveView<SingleServiceController> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   OutlinedButton(
-                                    onPressed: () {},
-                                    child: Text(
-                                      "Booking",
-                                      style: TextStyle(color: Colors.blueGrey),
-                                    ),
+                                    onPressed: () {
+                                      bookingController
+                                          .addBooking(controller.workModel);
+                                    },
+                                    child: Obx(() => Text(
+                                          bookingController
+                                                  .isInBookin(
+                                                      controller.workModel)
+                                                  .value
+                                              ? "Debook"
+                                              : "Booking",
+                                          style: TextStyle(
+                                              color: bookingController
+                                                      .isInBookin(
+                                                          controller.workModel)
+                                                      .value
+                                                  ? Colors.green.shade500
+                                                  : Colors.blueGrey),
+                                        )),
                                     style: ButtonStyle(
                                       padding: MaterialStateProperty.all(
                                         EdgeInsets.symmetric(
@@ -183,15 +199,15 @@ class SingleService extends GetResponsiveView<SingleServiceController> {
                     return SliverGrid(
                       gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
                         maxCrossAxisExtent: 300,
-                        mainAxisSpacing: 24.0,
-                        crossAxisSpacing: 24.0,
-                        childAspectRatio: 0.9,
+                        mainAxisSpacing: 4.0,
+                        crossAxisSpacing: 2.0,
+                        childAspectRatio: 0.87,
                       ),
                       delegate: SliverChildBuilderDelegate(
-                        (BuildContext context, int index) {
+                            (BuildContext context, int index) {
                           WorkModel serviceModel = snapshot.data![index];
                           return GestureDetector(
-                            onTap: (){
+                            onTap: () {
                               Get.toNamed(AppRoutes.service,
                                   arguments: serviceModel);
                             },
@@ -201,8 +217,11 @@ class SingleService extends GetResponsiveView<SingleServiceController> {
                                   serviceModel.samples[0].image,
                               screen: screen,
                               onPress: () {
-                                Get.toNamed(AppRoutes.service,
-                                    arguments: serviceModel);
+                                Get.toNamed(
+                                  AppRoutes.service,
+                                  arguments: serviceModel,
+                                  preventDuplicates: false,
+                                );
                               },
                               width: screen.width * 0.4,
                               height: screen.height * 0.2,

@@ -1,13 +1,14 @@
-
 import 'package:elmawkef_inc/app/views/screens/services.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../views/screens/navigation_tabs/home.dart';
+
 import '../views/screens/navigation_tabs/booking.dart';
+import '../views/screens/navigation_tabs/home.dart';
 
 class BottomNavigationController extends GetxController {
   late List<Widget> pages;
-   late RxInt index;
+  late RxInt index;
+
   @override
   void onInit() {
     super.onInit();
@@ -29,5 +30,7 @@ class BottomNavigationController extends GetxController {
   void onReady() {}
 
   @override
-  void onClose() {}
+  void onClose()  {
+
+  }
 }

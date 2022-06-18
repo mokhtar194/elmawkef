@@ -31,7 +31,10 @@ class SignUpController extends GetxController {
     super.onInit();
   }
 
-  void verifyNumber(String phone) async {
+  void verifyNumber(String phone,String name) async {
+    await prefs.setInt(
+        'phone_number', int.parse(phone));
+    await prefs.setString('user_name',name);
     await FirebaseAuth.instance.verifyPhoneNumber(
       phoneNumber: phone,
       verificationCompleted: (PhoneAuthCredential credential) async {
@@ -53,11 +56,8 @@ class SignUpController extends GetxController {
   }
 
   @override
-  void onClose() async {
-    await prefs.setInt(
-        'phone_number', int.parse(phoneController.value.toString()));
-    await prefs.setString('user_name', nameController.value.toString());
+  void onClose() {
     phoneController.dispose();
-    phoneController.dispose();
+    nameController.dispose();
   }
 }
