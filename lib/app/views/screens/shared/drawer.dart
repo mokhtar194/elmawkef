@@ -4,6 +4,8 @@ import 'package:elmawkef_inc/app/router/routers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AppDrawer extends StatefulWidget {
   const AppDrawer({Key? key, this.screen}) : super(key: key);
@@ -101,31 +103,53 @@ class _AppDrawerState extends State<AppDrawer> {
           ),
           TextButton(
             child: ListTile(
-              leading: Icon(Icons.add_location),
-              title: Text('Address'.tr),
+              leading: Icon(Icons.post_add),
+              title: Text('Services '.tr),
             ),
             onPressed: () {},
           ),
           TextButton(
             child: ListTile(
-              leading: Icon(Icons.phone),
-              title: Text('Support'.tr),
+              leading: Icon(Icons.share),
+              title: Text('Tell a Friend'.tr),
             ),
-            onPressed: () {},
+            onPressed: () async {
+              final Uri launchUri = Uri(
+                scheme: "https",
+                path: "elmawkef.com",
+              );
+              await launchUrl(launchUri);
+            },
           ),
           TextButton(
             child: ListTile(
-              leading: Icon(Icons.local_offer_outlined),
-              title: Text('Offers'.tr),
+              leading: Icon(Icons.stars),
+              title: Text('Rate US'.tr),
             ),
-            onPressed: () {},
+            onPressed: () {
+              Get.toNamed(AppRoutes.review);
+            },
           ),
           TextButton(
             child: ListTile(
-              leading: Icon(Icons.notifications),
-              title: Text('Notification'.tr),
+              leading: Icon(Icons.mail_rounded),
+              title: Text('ContactUs'.tr),
             ),
-            onPressed: () {},
+            onPressed: () {
+              Get.toNamed(AppRoutes.contactUs);
+            },
+          ),
+          TextButton(
+            child: ListTile(
+              leading: Icon(Icons.logout),
+              title: Text('LogOut'.tr),
+            ),
+            onPressed: () async {
+              SharedPreferences preferences =
+                  await SharedPreferences.getInstance();
+              await preferences.clear();
+              Get.offAllNamed(AppRoutes.signup);
+            },
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8),

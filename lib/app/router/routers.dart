@@ -8,4 +8,6 @@ class AppRoutes {
   static const String profile = "/profile";
   static const String service = "/services/:id";
   static const String services = "/services";
+  static const String contactUs = "/contact";
+  static const String review = "/review";
 }

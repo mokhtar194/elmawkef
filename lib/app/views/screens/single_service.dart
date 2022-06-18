@@ -133,7 +133,6 @@ class SingleService extends GetResponsiveView<SingleServiceController> {
                                   ),
                                   ElevatedButton(
                                     onPressed: () async {
-                                      print(customerModel.phone_number);
                                       final Uri launchUri = Uri(
                                         scheme: 'tel',
                                         path: "+212" +

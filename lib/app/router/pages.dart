@@ -2,6 +2,8 @@ import 'package:elmawkef_inc/app/models/work.dart';
 import 'package:elmawkef_inc/app/views/screens/auth/otp_screen.dart';
 import 'package:elmawkef_inc/app/views/screens/auth/signup.dart';
 import 'package:elmawkef_inc/app/views/screens/categories.dart';
+import 'package:elmawkef_inc/app/views/screens/drawer_screens/contact_us.dart';
+import 'package:elmawkef_inc/app/views/screens/drawer_screens/review.dart';
 import 'package:elmawkef_inc/app/views/screens/navigation_stack.dart';
 import 'package:elmawkef_inc/app/views/screens/profile.dart';
 import 'package:elmawkef_inc/app/views/screens/services.dart';
@@ -51,6 +53,14 @@ class Pages {
         GetPage(
           name: AppRoutes.profile,
           page: () => Profile(),
+        ),
+        GetPage(
+          name: AppRoutes.contactUs,
+          page: () => ContactUs(),
+        ),
+        GetPage(
+          name: AppRoutes.review,
+          page: () => Review(),
         ),
         GetPage(
           name: AppRoutes.service,
